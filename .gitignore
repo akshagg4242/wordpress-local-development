@@ -1,0 +1,16 @@
+.env
+
+# SSL certificates
+nginx/certs/*.pem
+nginx/certs/*-key.pem
+
+# Docker
+docker-data/
+mysql/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
