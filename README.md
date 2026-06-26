@@ -1,22 +1,46 @@
 # WordPress Local Development (Docker)
 
 ## Overview
-This project provides a Docker-based local WordPress development environment.
+
+This project provides a complete Docker-based local WordPress development environment using Nginx, MySQL, and phpMyAdmin.
+
+The environment is designed for easy setup, local testing, development, and future reproducibility with documented versions and setup steps.
+
+---
 
 ## Features
-- WordPress + MySQL using Docker
-- Nginx configuration
-- Local development setup
-- Easy startup and teardown
+
+* WordPress running in Docker containers
+* Nginx reverse proxy configuration
+* MySQL database integration
+* phpMyAdmin database management
+* Easy startup and shutdown
+* Fully documented setup process
+
+---
+
+## Services and Versions
+
+| Service                   | Version    |
+| ------------------------- | ---------- |
+| Docker Engine             | 29.5.3     |
+| Docker Compose            | v5.1.4     |
+| WordPress                 | 6.5.2      |
+| PHP (WordPress Container) | 8.2.18     |
+| MySQL                     | 8.0.46     |
+| Nginx                     | 1.31.2     |
+| phpMyAdmin Container      | PHP 8.3.26 |
+| Host OS                   | Windows    |
 
 ---
 
 ## Prerequisites
 
-Install:
+Install the following before starting:
 
-- Docker Desktop
-- Git
+* Docker Desktop
+* Git
+* Web Browser (Chrome / Edge)
 
 Verify installation:
 
@@ -36,52 +60,144 @@ cd wordpress-local-development
 
 ---
 
-## Start Environment
+## Project Structure
+
+```text
+wordpress-local-development/
+│
+├── nginx/                 # Nginx configuration
+├── src/                   # WordPress source files
+├── docker-compose.yml     # Docker services configuration
+├── README.md              # Project documentation
+└── setup-guide.md         # Setup reference
+```
+
+---
+
+## Setup Process
+
+### Step 1 — Start Docker Desktop
+
+Ensure Docker Desktop is installed and running.
+
+---
+
+### Step 2 — Start Containers
+
+Run:
 
 ```bash
 docker compose up -d
 ```
 
+This creates and starts:
+
+* WordPress container
+* MySQL database container
+* Nginx container
+* phpMyAdmin container
+
 ---
 
-## Stop Environment
+### Step 3 — Verify Running Containers
+
+Run:
+
+```bash
+docker compose ps
+```
+
+Verify all services are running.
+
+---
+
+### Step 4 — Access the Application
+
+Open:
+
+### WordPress Site
+
+```text
+http://localhost
+```
+
+### WordPress Admin
+
+```text
+http://localhost/wp-admin
+```
+
+### phpMyAdmin
+
+```text
+http://localhost:8081
+```
+
+---
+
+### Step 5 — Configure WordPress
+
+After opening localhost:
+
+1. Select language
+2. Configure site details
+3. Create admin account
+4. Login to Dashboard
+
+---
+
+## Common Commands
+
+### Stop Environment
 
 ```bash
 docker compose down
 ```
 
----
+### Restart Environment
 
-## Project Structure
+```bash
+docker compose restart
+```
 
-```text
-wordpress-local-development/
-├── nginx/
-├── src/
-├── docker-compose.yml
-└── README.md
+### View Logs
+
+```bash
+docker compose logs
+```
+
+### Start Existing Containers
+
+```bash
+docker compose start
 ```
 
 ---
 
-## Access
+## Verification
 
-WordPress:
-```
+Environment setup is considered successful when:
 
-http://localhost
+* WordPress homepage loads
+* Admin dashboard is accessible
+* phpMyAdmin opens successfully
+* All containers show running status
 
-```
+---
 
-Admin:
-```
+## Screenshots
 
-http://localhost/wp-admin
+Project screenshots demonstrating:
 
-```
+* Docker containers
+* WordPress homepage
+* WordPress dashboard
+* phpMyAdmin access
+
+are included in this repository.
 
 ---
 
 ## Status
 
-Completed and verified for local development.
+Completed, tested, and verified for local development environment setup.
